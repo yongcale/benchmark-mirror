@@ -16,6 +16,7 @@ except ImportError:
     config = configparser.ConfigParser()
 
 from utils import cpu_gpu_profiler, cfg_process
+
 # TODO add detailed error/exception handling in the script
 from utils.errors import MetricComputeMethodError, MetricPatternError
 
@@ -36,7 +37,7 @@ class BenchmarkMetricComputeMethod:
         elif metric_compute_method == 'total':
             return sum(metric)
         else:
-            raise MetricsComputeMethodError("This metric compute method is not supported!")
+            raise MetricComputeMethodError("This metric compute method is not supported!")
 
 
 class BenchmarkResultManager(object):
@@ -158,7 +159,7 @@ def benchmark(command_to_execute, metric_patterns,
     result.metric_map = update_metric_map
     result.save_to(RESULT_FILE_PATH)
     # clean up
-    os.remove(log_file_location)
+    #os.remove(log_file_location)
 
 
 if __name__ == '__main__':
@@ -168,6 +169,10 @@ if __name__ == '__main__':
     parser.add_argument('--num-gpus', type=int, help='Numbers of gpus. e.g. --num-gpus 8')
     parser.add_argument('--epochs', type=int, help='Numbers of epochs for training. e.g. --epochs 20')
     parser.add_argument('--metrics-suffix', type=str, help='Metrics suffix e.g. --metrics-suffix daily')
+    parser.add_argument('--kvstore', type=str, default='device',help='kvstore to use for trainer/module.')
+    parser.add_argument('--dtype', type=str, default='float32',help='floating point precision to use')
+      
+    
     args = parser.parse_args()
 
     # modify the template config file and generate the user defined config file.
