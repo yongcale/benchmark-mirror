@@ -1331,7 +1331,7 @@ def main():
             batch_size)
 
     logger.info("Creating session")
-    config = tf.ConfigProto()
+    config = tf.ConfigProto(allow_soft_placement = True)
     config.intra_op_parallelism_threads = 1
     config.inter_op_parallelism_threads = 10
     config.gpu_options.force_gpu_compatible = True
