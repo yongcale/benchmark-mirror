@@ -13,8 +13,10 @@ if [ "$#" -ne 1 ]; then
 fi
 
 # install tensorflow
-pip install --ignore-installed --upgrade "$1"
+pip install --ignore-installed --upgrade tensorflow_gpu #"$1"
+pip3 install --ignore-installed --upgrade tensorflow_gpu
 
 # install horovod
 #source activate $1; 
 pip install --no-cache-dir horovod
+pip3 install --no-cache-dir horovod
