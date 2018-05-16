@@ -9,5 +9,5 @@ sudo pip install --ignore-installed --upgrade tensorflow_gpu
 sudo pip3 install --ignore-installed --upgrade tensorflow_gpu
 
 # install horovod
-sudo pip install --no-cache-dir horovod
-sudo pip3 install --no-cache-dir horovod
+pip install --no-cache-dir horovod
+pip3 install --no-cache-dir horovod
