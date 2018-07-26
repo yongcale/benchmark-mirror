@@ -36,6 +36,8 @@ class BenchmarkMetricComputeMethod:
             return metric[-1]
         elif metric_compute_method == 'total':
             return sum(metric)
+        elif isinstance(metric_compute_method,int) or metric_compute_method.isdigit():
+            return metric[int(metric_compute_method)]
         else:
             raise MetricComputeMethodError("This metric compute method is not supported!")
 
